@@ -1,7 +1,13 @@
 <template>
   <v-app>
     <v-container>
-      <weather-item :weather-info="weatherInfo"></weather-item>
+      <div>
+        <weather-item
+          v-for="(weatherInfo, index) in weathersInfo"
+          :weather-info="weatherInfo"
+          :key="index"
+        ></weather-item>
+      </div>
     </v-container>
   </v-app>
 </template>
@@ -14,12 +20,26 @@ export default {
   components: { WeatherItem },
   data() {
     return {
-      weatherInfo: {
-        statusImage: weatherStatus.good,
-        temperature: 20,
-        country: "Antananarivo",
-        date: "Friday, 6 September",
-      },
+      weathersInfo: [
+        {
+          statusImage: weatherStatus.good,
+          temperature: 20,
+          country: "Antananarivo",
+          date: "Friday, 6 September",
+        },
+        {
+          statusImage: weatherStatus.good,
+          temperature: 10,
+          country: "Antananarivo",
+          date: "Monday, 10 September",
+        },
+        {
+          statusImage: weatherStatus.good,
+          temperature: 5,
+          country: "Antananarivo",
+          date: "Tuesday, 10 September",
+        },
+      ],
     };
   },
 };
